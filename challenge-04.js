@@ -4,13 +4,8 @@ um único parâmetro como argumento. Essa função deve retornar `true` se o
 equivalente booleano para o valor passado no argumento for `true`, ou `false`
 para o contrário.
 */
-const isTruthy = function (a) {
-  if (a) {
-    return "true";
-  } else {
-    return "false";
-  }
-};
+
+const isTruthy = (param) => (param ? true : false);
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 console.log(isTruthy(""));
@@ -77,7 +72,7 @@ function getModel() {
 /*
 Crie um método chamado `obterMarca` que retorne a marca do carro.
 */
-function getModel() {
+function getBrand() {
   return car.brand;
 }
 
@@ -106,17 +101,23 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 citado acima, no lugar de "pessoas".
 */
 function addPeoplesInCar(number) {
-  if (number === 5) {
-    var peoplesNumbers = `O carro já está lotado!`;
-  } else if (number < 5) {
-    var peoplesNumbers = `Só cabem mais ${5 - number} pessoas!`;
-  } else if (number === 1) {
-    `Já temos ${number} pessoa no carro!`;
+  const newNumberOfPeoples = car.numberOfPeoples + number;
+  if (newNumberOfPeoples > car.seats) {
+    const availableSeats = car.seats - car.numberOfPeoples;
+    if (availableSeats === 0) {
+      return "O carro já está lotado!";
+    } else {
+      return `Só cabem mais ${availableSeats} pessoas!`;
+    }
+  } else if (newNumberOfPeoples < 0) {
+    return "Você não pode remover mais pessoas do que o total no carro!";
   } else {
-    var peoplesNumbers = `Já temos 5 pessoas no carro!`;
+    car.numberOfPeoples = newNumberOfPeoples;
+    const peoplePeoples = car.numberOfPeoples === 1 ? "pessoa" : "pessoas";
+    return `Já temos ${car.numberOfPeoples} ${peoplePeoples} no carro!`;
   }
-  return peoplesNumbers;
 }
+
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
 utilize sempre o formato de invocação do método (ou chamada da propriedade),
@@ -141,19 +142,19 @@ console.log(car.color);
 console.log(getBrandModel());
 
 // Adicione 2 pessoas no carro.
-addPeoplesInCar(2);
+console.log(addPeoplesInCar(2));
 
 // Adicione mais 4 pessoas no carro.
-addPeoplesInCar(4);
+console.log(addPeoplesInCar(4));
 
 // Faça o carro encher.
-addPeoplesInCar(5);
+console.log(addPeoplesInCar(3));
 
 // Tire 4 pessoas do carro.
-addPeoplesInCar(1);
+console.log(addPeoplesInCar(-4));
 
 // Adicione 10 pessoas no carro.
-addPeoplesInCar(10);
+console.log(addPeoplesInCar(10));
 
 // Quantas pessoas temos no carro
-console.log(addPeoplesInCar());
+console.log(`Atualmente, temos ${car.numberOfPeoples} pessoa no carro!`);

@@ -75,14 +75,27 @@ function book(name) {
       publishCompany: "Word Publishing",
     },
   };
-  if (name === "Autobiografia de Billy Graham") {
-    return bookObject.billyGrahamAutobiografia;
-  } else if (name === "Mero Cristianismo") {
-    return bookObject.mereChristianity;
-  } else if (name === "Aperto da graça") {
-    return bookObject.inTheGripOfGrace;
-  } else {
-    return bookObject;
+  // if (name === "Autobiografia de Billy Graham") {
+  //   return bookObject.billyGrahamAutobiografia;
+  // } else if (name === "Mero Cristianismo") {
+  //   return bookObject.mereChristianity;
+  // } else if (name === "Aperto da graça") {
+  //   return bookObject.inTheGripOfGrace;
+  // } else {
+  //   return bookObject;
+  // }
+  switch (name) {
+    case "Autobiografia de Billy Graham":
+      return bookObject.billyGrahamAutobiografia;
+
+    case "Mero Cristianismo":
+      return bookObject.mereChristianity;
+
+    case "Aperto da graça":
+      return bookObject.inTheGripOfGrace;
+
+    default:
+      return bookObject;
   }
 }
 

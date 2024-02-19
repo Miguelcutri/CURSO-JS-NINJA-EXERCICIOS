@@ -101,7 +101,7 @@ var mod = calculator("%");
 
 /*
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
-no console.
+no console
 */
 console.log(subtraction(5, 5));
 console.log(multiplication(5, 5));
